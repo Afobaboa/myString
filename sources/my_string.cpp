@@ -1,4 +1,7 @@
+#include <assert.h>
+#include <stdlib.h>
 #include "../my_string.h"
+
 
 // TODO:
 // strlen()
@@ -6,7 +9,7 @@
 // strncpy()
 // strcat()
 // strncut()
-// fgets()
+// fgets() 
 // strdup()
 // getline()
 
@@ -37,12 +40,16 @@ size_t my_strlen(const char* string) {
 
 
 char* my_strcpy(char* toString, const char* fromString) {
+    if (toString == NULL || fromString == NULL)
+        return NULL;
+
     size_t charNum = 0;
 
-    while (*fromString != '\0') {
+    while (fromString[charNum] != '\0') {
         toString[charNum] = fromString[charNum];
         charNum++;
     }    
+
     toString[charNum] = '\0';
 
     return toString;
@@ -50,13 +57,17 @@ char* my_strcpy(char* toString, const char* fromString) {
 
 
 char* my_strncpy(char* toString, const char* fromString, const size_t maxCharCount) {
+    if (toString == NULL || fromString == NULL)
+        return NULL;
+
     size_t charNum = 0;
 
-    while (charNum < maxCharCount && toString[charNum] != '\0') {
+    while (charNum < maxCharCount && fromString[charNum] != '\0') {
         toString[charNum] = fromString[charNum];
         charNum++;
     } 
-    *toString = '\0';
+
+    toString[charNum] = '\0';
 
     return toString;
 }
@@ -71,17 +82,35 @@ char* my_strcat(char* toString, const char* fromString) {
         toStringLength++;
         fromStringCharNum++;
     }
+
     toString[toStringLength + fromStringCharNum] = '\0';
 
     return toString;
 }
 
 
-char* my_fgets(char* string, const size_t maxCharCount, const FILE* file) {
+char* my_fgets(char* string, const size_t maxCharCount, FILE* file) {
+    size_t charNum = 0;
 
+    for (; charNum < maxCharCount-1; charNum++) {
+        int c = fgetc(file);
+        if (c == EOF || c == '\n' || c == '\0')
+            break;
+
+        string[charNum] = (char) c;
+    }
+
+    string[charNum] = '\0';
+
+    return string;
 }
 
 
 char* my_strdup(const char* string) {
+    char* stringCopy = (char*) calloc(my_strlen(string) + 1, sizeof(char));
+
+    assert(stringCopy);
+    assert(string);
     
+    return my_strcpy(stringCopy, string);
 }

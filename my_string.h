@@ -38,7 +38,7 @@ char* my_strncpy(char* toString, const char* fromString, const size_t charCount)
 char* my_strcat(char* toString, const char* fromString);
 
 
-char* my_fgets(char* string, const size_t maxCharCount, const FILE* file);
+char* my_fgets(char* string, const size_t maxCharCount, FILE* file);
 
 
 char* my_strdup(const char* string);

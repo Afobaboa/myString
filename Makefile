@@ -35,7 +35,7 @@ HEADERS=$(wildcard *.h)
 EXECUTABLE=my_string
 
 
-all: $(EXECUTABLE) $(OBJECTS) $(OBJECTS_DIR)
+all: $(EXECUTABLE) $(OBJECTS)
 
 
 run:
@@ -50,7 +50,7 @@ $(OBJECTS): $(OBJECTS_DIR)%.o: $(SOURCES_DIR)%.cpp $(HEADERS) $(OBJECTS_DIR)
 	$(CC) -c $(CPPFLAGS) $< -o $@
 
 
-$(OBJECTS_DIR):
+dir:
 	mkdir $(OBJECTS_DIR)
 
 
