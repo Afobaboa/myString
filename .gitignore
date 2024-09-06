@@ -1,5 +1,4 @@
-objects
+objects/
 my_string
 sources/main.cpp
-Makefile
 test.txt
