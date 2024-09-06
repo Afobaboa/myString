@@ -37,8 +37,7 @@ size_t my_strlen(const char* string) {
 
 
 char* my_strcpy(char* toString, const char* fromString) {
-    char*  toStringCopy = toString;
-    size_t charNum      = 0;
+    size_t charNum = 0;
 
     while (*fromString != '\0') {
         toString[charNum] = fromString[charNum];
@@ -46,13 +45,12 @@ char* my_strcpy(char* toString, const char* fromString) {
     }    
     toString[charNum] = '\0';
 
-    return toStringCopy;
+    return toString;
 }
 
 
 char* my_strncpy(char* toString, const char* fromString, const size_t maxCharCount) {
-    char*  toStringCopy = toString;
-    size_t charNum      = 0;
+    size_t charNum = 0;
 
     while (charNum < maxCharCount && toString[charNum] != '\0') {
         toString[charNum] = fromString[charNum];
@@ -60,12 +58,22 @@ char* my_strncpy(char* toString, const char* fromString, const size_t maxCharCou
     } 
     *toString = '\0';
 
-    return toStringCopy;
+    return toString;
 }
 
 
 char* my_strcat(char* toString, const char* fromString) {
-    
+    size_t toStringLength    = my_strlen(toString);
+    size_t fromStringCharNum = 0;
+
+    while (fromString[fromStringCharNum] != '\0') {
+        toString[toStringLength + fromStringCharNum] = fromString[fromStringCharNum];
+        toStringLength++;
+        fromStringCharNum++;
+    }
+    toString[toStringLength + fromStringCharNum] = '\0';
+
+    return toString;
 }
 
 
