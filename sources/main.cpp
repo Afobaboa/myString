@@ -1,4 +1,4 @@
-#include "../myString.h"
+#include "../my_string.h"
 
 
 int main(int argc, char* argv[]) {

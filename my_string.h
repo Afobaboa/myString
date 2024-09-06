@@ -2,6 +2,10 @@
 #define MY_STRING_H
 
 
+#include <stddef.h>
+#include <stdio.h>
+
+
 /**
  * Print string to stdin.
  * this function automatically
@@ -20,6 +24,24 @@ void my_puts(const char* string);
  * any entry of symbol to string.
  */
 char* my_strchr(const char* string, const char symbol);
+
+
+size_t my_strlen(const char* string);
+
+
+char* my_strcpy(char* toString, const char* fromString);
+
+
+char* my_strncpy(char* toString, const char* fromString, const size_t charCount);
+
+
+char* my_strcat(char* toString, const char* fromString);
+
+
+char* my_fgets(char* string, const size_t maxCharCount, const FILE* file);
+
+
+char* my_strdup(const char* string);
 
 
 #endif // MY_STRING_H

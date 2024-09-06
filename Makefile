@@ -32,10 +32,10 @@ OBJECTS_DIR=objects/
 SOURCES=$(wildcard $(SOURCES_DIR)*.cpp)
 OBJECTS=$(patsubst $(SOURCES_DIR)%.cpp,$(OBJECTS_DIR)%.o,$(SOURCES))
 HEADERS=$(wildcard *.h)
-EXECUTABLE=myString
+EXECUTABLE=my_string
 
 
-all: $(EXECUTABLE) $(OBJECTS)
+all: $(EXECUTABLE) $(OBJECTS) $(OBJECTS_DIR)
 
 
 run:
